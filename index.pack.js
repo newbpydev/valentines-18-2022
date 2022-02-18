@@ -20,7 +20,7 @@ async function changeColor() {
       .then((data) => {
         data.colors.forEach((color) => {
           colors.push(color.value);
-        })
+        });
       })
       .catch((err) => console.error(err));
   } catch (e) {
@@ -29,6 +29,29 @@ async function changeColor() {
 
   //* Change heart and bg colors
   body.style.backgroundColor = colors[0];
-  heart.style.setProperty('--white', colors[1]);
+  heart.style.setProperty("--white", colors[1]);
 
+  heartBeat();
 }
+
+const heartBeat = () => {
+  let intervalId;
+  intervalId = setInterval(() => {
+    // console.log("heya", intervalId);
+    heart.classList.add("heart-beat");
+
+    setTimeout(() => {
+      heart.classList.remove("heart-beat");
+    }, 150);
+    setTimeout(() => {
+      heart.classList.add("heart-beat");
+    }, 300);
+    setTimeout(() => {
+      heart.classList.remove("heart-beat");
+    }, 450);
+  }, 1000);
+
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, 6000);
+};
