@@ -1,6 +1,6 @@
 # Frontend Mentor - Profile card component solution
 
-This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-filter-duplicate-emojis-challenge-co9e84683a1a75f69bfa6a49d). 
+This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-heart-customiser-api-challenge-co9be402f91d8ef8fbf71a6e2). 
 
 ## Table of contents
 
@@ -17,12 +17,11 @@ This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/code
 
 ## Overview
 
-This is my solution to the Valentine's Challenge for the 17th of January, 2022.
-It is a small project that interacts with the users that displays a list of
-emojis and the programs has to filter out the duplicates. I wanted to try new
-things, so I added many mouse events and combination of those to get the desired
-results. the project is about 70% done, I wanted to add more functionality but
-overall I am very impressed on what is possible so far.
+This is my solution to the Valentine's Challenge for the 18th of January, 2022.
+It is a small project that lets the user click a button and it will fetch from
+an api 2 colors and change the bg and heart colors on the screen. I added an
+extra feature that lets the heart start beating for a certain amount of time
+after a color change.
 
 ### Screenshot
 
@@ -33,8 +32,8 @@ overall I am very impressed on what is possible so far.
 
 ### Links
 
-- Solution URL: [GitHub](https://github.com/newbpydev/valentines-17-2022)
-- Live Site URL: [Live Site](https://upbeat-kilby-3fd751.netlify.app/)
+- Solution URL: [GitHub](https://github.com/newbpydev/valentines-18-2022)
+- Live Site URL: [Live Site](https://fervent-colden-808897.netlify.app/)
 
 ## My process
 
@@ -47,33 +46,30 @@ overall I am very impressed on what is possible so far.
 
 ### What I learned
 
-I have learned on this project how to use the mouseover, mouseenter, and more on
-the keyup, keydown events.
+I have learned on this project how to use the setInterval and setTimeout in
+nested form to achieve more complex patters.
 
 ```javascript
-function topPUpdate() {
-  emojiSpanEls.forEach((emojiSpanEl, i) => {
-    emojiSpanEl.addEventListener("mouseover", (eInner) => {
-      //! If shift is active
-      document.addEventListener("keydown", (e) => {
-        if (e.shiftKey) {
-          emojiSpanEls.forEach((emoji) => {
-            if (emojiSpanEl.textContent === emoji.textContent) {
-              emoji.classList.add("emoji-span--shifted");
-            } else {
-              emoji.classList.remove("emoji-span--shifted");
-            }
-          });
-        }
-      });
+const heartBeat = () => {
+  let intervalId;
+  intervalId = setInterval(() => {
+    heart.classList.add("heart-beat");
 
-      //! If shift is not active
-      document.addEventListener("keyup", (e) => {
-        emojiSpanEls.forEach((emoji) => {
-          emoji.classList.remove("emoji-span--shifted");
-        });
-      });
-    });
+    setTimeout(() => {
+      heart.classList.remove("heart-beat");
+    }, 150);
+    setTimeout(() => {
+      heart.classList.add("heart-beat");
+    }, 300);
+    setTimeout(() => {
+      heart.classList.remove("heart-beat");
+    }, 450);
+  }, 1000);
+
+  setTimeout(() => {
+    clearInterval(intervalId);
+  }, 6000);
+};
 ```
 
 ### Continued development
@@ -84,9 +80,9 @@ always try new things on every project.
 
 ### Useful resources
 
-- [MDN - mouseover event](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event) - The mouseover event is fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements.
-- [MDN - NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) - NodeList objects are collections of nodes, usually returned by properties such as Node.childNodes and methods such as document.querySelectorAll().
-- [MDN - EventTarget.removeEventListener()](https://developer.mozilla.org/es/docs/Web/API/EventTarget/removeEventListener) - The removeEventListener() method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.
+- [MDN - setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) - The setInterval() method, offered on the Window and Worker interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+- [MDN - setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) - The global setTimeout() method sets a timer which executes a function or specified piece of code once the timer expires.
+- [MDN - clearInterval()](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) - The global clearInterval() method cancels a timed, repeating action which was previously established by a call to setInterval().
 
 ## Author
 

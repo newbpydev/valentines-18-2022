@@ -37,7 +37,6 @@ async function changeColor() {
 const heartBeat = () => {
   let intervalId;
   intervalId = setInterval(() => {
-    // console.log("heya", intervalId);
     heart.classList.add("heart-beat");
 
     setTimeout(() => {
