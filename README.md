@@ -1,4 +1,4 @@
-# Frontend Mentor - Profile card component solution
+# Valentine's Challenge - Heart Customiser API Challenge
 
 This is a solution to the [Valentine's Challenge](https://scrimba.com/learn/codeweeks/-heart-customiser-api-challenge-co9be402f91d8ef8fbf71a6e2). 
 
